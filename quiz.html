@@ -1,0 +1,126 @@
+<head>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
+<link href='style.css' rel='stylesheet' type='text/css'>
+<title>StateValues Quiz</title>
+<link rel="icon" type="x-icon" href="icon.png">
+<link rel="shortcut icon" type="x-icon" href="icon.png">
+<meta charset="utf-8">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6511426299019766",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
+<body>
+<script type="application/javascript"
+        src="questions.js">
+</script>
+<h1>StateValues</h1>
+<hr>
+<h2 style="text-align:center;" id="question-number">It should appear</h2>
+<p class="question" id="question-text"></p>
+<button class="button" onclick="next_question( 1.0)" style="background-color: #00c000;">Strongly Agree</button> <br>
+<button class="button" onclick="next_question( 0.5)" style="background-color: #00e000;">Agree</button> <br>
+<button class="button" onclick="next_question( 0.0)" style="background-color: #757575;">Neutral</button> <br>
+<button class="button" onclick="next_question(-0.5)" style="background-color: #e00000;">Disagree</button> <br>
+<button class="button" onclick="next_question(-1.0)" style="background-color: #c00000;">Strongly Disagree</button> <br>
+<button class="small_button" onclick="prev_question()" id="back_button">Back</button>
+<button class="small_button_off" id="back_button_off">Back</button><br>
+
+<!-- Website visit statistics - no personal information is collected! -->
+<script type="text/javascript">
+var sc_project=11325211;
+var sc_invisible=1;
+var sc_security="fd9f0659";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="//c.statcounter.com/11325211/0/fd9f0659/1/" alt="web
+stats"></a></div></noscript>
+
+<!-- JavaScript for the test itself -->
+<script>
+    var max_bauth, max_brest, max_benfo, max_bdocu, max_bpopu, max_bjust, max_bchan; // Max possible scores
+    max_bauth = max_brest = max_benfo = max_bdocu = max_bpopu = max_bjust = max_bchan = 0;
+    var bauth, brest, benfo, bdocu, bpopu, bjust, bchan; // User's scores
+    bauth = brest = benfo = bdocu = bpopu = bjust = bchan = 0;
+    var qn = 0; // Question number
+    var prev_answer = null;
+    init_question();
+    for (var i = 0; i < questions.length; i++) {
+        max_bauth += Math.abs(questions[i].effect.bauth)
+        max_brest += Math.abs(questions[i].effect.brest)
+        max_benfo += Math.abs(questions[i].effect.benfo)
+        max_bdocu += Math.abs(questions[i].effect.bdocu)
+        max_bpopu += Math.abs(questions[i].effect.bpopu)
+        max_bjust += Math.abs(questions[i].effect.bjust)
+        max_bchan += Math.abs(questions[i].effect.bchan)
+    }
+    function init_question() {
+        document.getElementById("question-text").innerHTML = questions[qn].question;
+        document.getElementById("question-number").innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
+        if (prev_answer == null) {
+            document.getElementById("back_button").style.display = 'none';
+            document.getElementById("back_button_off").style.display = 'block';
+        } else {
+            document.getElementById("back_button").style.display = 'block';
+            document.getElementById("back_button_off").style.display = 'none';
+        }
+
+    }
+
+    function next_question(mult) {
+        bauth += mult*questions[qn].effect.bauth
+        brest += mult*questions[qn].effect.brest
+        benfo += mult*questions[qn].effect.benfo
+        bdocu += mult*questions[qn].effect.bdocu
+        bpopu += mult*questions[qn].effect.bpopu
+        bjust += mult*questions[qn].effect.bjust
+        bchan += mult*questions[qn].effect.bchan
+        qn++;
+        prev_answer = mult;
+        if (qn < questions.length) {
+            init_question();
+        } else {
+            results();
+        }
+    }
+    function prev_question() {
+        if (prev_answer == null) {
+            return;
+        }
+        qn--;
+        bauth -= prev_answer * questions[qn].effect.bauth;
+        brest -= prev_answer * questions[qn].effect.brest;
+        benfo -= prev_answer * questions[qn].effect.benfo;
+        bdocu -= prev_answer * questions[qn].effect.bdocu;
+        bpopu -= prev_answer * questions[qn].effect.bpopu;
+        bjust -= prev_answer * questions[qn].effect.bjust;
+        bchan -= prev_answer * questions[qn].effect.bchan;
+        prev_answer = null;
+        init_question();
+
+    }
+    function calc_score(score,max) {
+        return (100*(max+score)/(2*max)).toFixed(1)
+    }
+    function results() {
+        location.href = `results.html`
+            + `?demo=${calc_score(bauth,max_bauth)}`
+            + `&rest=${calc_score(brest,max_brest)}`
+            + `&enfo=${calc_score(benfo,max_benfo)}`
+            + `&conf=${calc_score(bdocu,max_bdocu)}`
+            + `&popu=${calc_score(bpopu,max_bpopu)}`
+            + `&cons=${calc_score(bjust,max_bjust)}`
+            + `&adap=${calc_score(bchan,max_bchan)}`
+    }
+</script>
+</body>

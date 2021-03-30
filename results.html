@@ -1,0 +1,288 @@
+<head>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
+<link href='style.css' rel='stylesheet' type='text/css'>
+<title>StateValues Results</title>
+<link rel="icon" type="x-icon" href="icon.png">
+<link rel="shortcut icon" type="x-icon" href="icon.png">
+<meta charset="utf-8">
+<script>
+  version = "StateValues" //Remember to update this before making changes to the test itself!
+</script>
+</head>
+<script type="application/javascript"
+        src="ideologies.js">
+</script>
+
+<body>
+<h1>StateValues</h1>
+<hr>
+
+<h1>Results</h1>
+
+<h2>Authority Axis : <span class="weight-300" id="bauth"></span></h2>
+<div class="axis">
+    <img id="img-demo" src="value_images/democratic.png" height="128pt"/>
+    <div class="bar demo" id="bar-demo"><div class="text-wrapper" id="demo"></div></div>
+    <div class="bar auto" id="bar-auto"><div class="text-wrapper" id="auto"></div></div>
+    <img id="img-auto" src="value_images/autocratic.png" height="128pt"/>
+</div>
+<h2>Restriction Axis : <span class="weight-300" id="brest"></span></h2>
+<div class="axis">
+    <img id="img-rest" src="value_images/restrictive.png" height="128pt"/>
+    <div class="bar rest" id="bar-rest"><div class="text-wrapper" id="rest"></div></div>
+    <div class="bar perm" id="bar-perm"><div class="text-wrapper" id="perm"></div></div>
+    <img id="img-perm" src="value_images/permissive.png" height="128pt"/>
+</div>
+<h2>Enforcement Axis : <span class="weight-300" id="benfo"></span></h2>
+<div class="axis">
+    <img id="img-enfo" src="value_images/enforcement.png" height="128pt"/>
+    <div class="bar enfo" id="bar-enfo"><div class="text-wrapper" id="enfo"></div></div>
+    <div class="bar gads" id="bar-gads"><div class="text-wrapper" id="gads"></div></div>
+    <img id="img-gads" src="value_images/gadsdenism.png" height="128pt"/>
+</div>
+<h2>Documents Axis : <span class="weight-300" id="bdocu"></span></h2>
+<div class="axis">
+    <img id="img-conf" src="value_images/confidential.png" height="128pt"/>
+    <div class="bar conf" id="bar-conf"><div class="text-wrapper" id="conf"></div></div>
+    <div class="bar tran" id="bar-tran"><div class="text-wrapper" id="tran"></div></div>
+    <img id="img-tran" src="value_images/transparent.png" height="128pt"/>
+</div>
+<h2>Populism Axis : <span class="weight-300" id="bpopu"></span></h2>
+<div class="axis">
+    <img id="img-popu" src="value_images/populism.png" height="128pt"/>
+    <div class="bar popu" id="bar-popu"><div class="text-wrapper" id="popu"></div></div>
+    <div class="bar elit" id="bar-elit"><div class="text-wrapper" id="elit"></div></div>
+    <img id="img-elit" src="value_images/elitism.png" height="128pt"/>
+</div>
+<h2>Justice Axis : <span class="weight-300" id="bjust"></span></h2>
+<div class="axis">
+    <img id="img-cons" src="value_images/consequences.png" height="128pt"/>
+    <div class="bar cons" id="bar-cons"><div class="text-wrapper" id="cons"></div></div>
+    <div class="bar deon" id="bar-deon"><div class="text-wrapper" id="deon"></div></div>
+    <img id="img-deon" src="value_images/deontology.png" height="128pt"/>
+</div>
+<h2>Change Axis : <span class="weight-300" id="bchan"></span></h2>
+<div class="axis">
+    <img id="img-adap" src="value_images/adaptation.png" height="128pt"/>
+    <div class="bar adap" id="bar-adap"><div class="text-wrapper" id="adap"></div></div>
+    <div class="bar cont" id="bar-cont"><div class="text-wrapper" id="cont"></div></div>
+    <img id="img-cont" src="value_images/constitution.png" height="128pt"/>
+</div>
+<h2>Closest Match: <span class="weight-300" id="ideology-label"></span></h2>
+<p>There's no closest match for now, so cope with the axes lmao</p>
+<p>You think your results should be integrated into the closest matches ? Send them to me on Discord ( Quark#0741 ) or on Gmail ( beaulieu.renaud@gmail.com ) . </p>
+<hr/>
+<img src="" id="banner">
+<button class="button" onclick="location.href='index.html';" style="background-color: #00b5ff;">Back</button> <br>
+<!-- Website visit restistics - no personal information is collected! -->
+<script type="text/javascript">
+var sc_project=11325211;
+var sc_invisible=1;
+var sc_security="fd9f0659";
+var scJsHost = (("https:" == document.location.popuocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"restcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="restcounter"><a title="web rests"
+href="http://restcounter.com/" target="_blank"><img
+class="restcounter"
+src="//c.restcounter.com/11325211/0/fd9f0659/1/" alt="web
+rests"></a></div></noscript>
+<script>
+    function getQueryVariable(variable)
+    {
+           var query = window.location.search.substring(1)
+           var vars = query.split("&")
+           for (var i=0;i<vars.length;i++) {
+                   var pair = vars[i].split("=")
+                   if(pair[0] == variable) {return pair[1]}
+           }
+           return(NaN);
+    }
+
+    function setBarValue(name, value) {
+        innerel = document.getElementById(name)
+        outerel = document.getElementById("bar-" + name)
+        outerel.style.width = (value + "%")
+        innerel.innerHTML = (value + "%")
+        if (innerel.offsetWidth + 20 > outerel.offsetWidth) {
+            innerel.style.visibility = "hidden"
+        }
+    }
+
+    bauthArray = ["Direct Democracy","Proportional","Representative","Neutral","Bicameral","Oligarchy","Autocracy"]
+    brestArray = ["Controlling","Restrictive","Limiting","Neutral","Lenient","Permissive","Civil Libertarian"]
+    benfoArray = ["Police State","Surveillance","Data Collection","Neutral","Nicer Cops","Gadsdenism","Police Abolition"]
+    bdocuArray = ["Deep State","Hidden","Confidential","Neutral","Declassifier","Transparent","Universal Leaking"]
+    bpopuArray = ["Everyman","Populism","Popular","Neutral","Establishment","Elitism","Aristocracy"]
+    bjustArray = ["Consequentialism","Particularism","Relativism","Neutral","Contractualism","Deontology","Commandments"]
+    bchanArray = ["Unstable","Changing","Adaptable","Neutral","Limited","Constitutional","Locked"]
+
+    function setLabel(val,ary) {
+        if (val > 100) { return "Off Compass" } else
+        if (val > 85) { return ary[0] } else
+        if (val > 70) { return ary[1] } else
+        if (val > 55) { return ary[2] } else
+        if (val >= 45) { return ary[3] } else
+        if (val >= 30) { return ary[4] } else
+        if (val >= 15) { return ary[5] } else
+        if (val >= 0) { return ary[6] } else
+        	{return "Off Compass"}
+    }
+
+    demo = getQueryVariable("demo")
+    rest = getQueryVariable("rest")
+    enfo = getQueryVariable("enfo")
+    conf = getQueryVariable("conf")
+    popu = getQueryVariable("popu")
+    cons = getQueryVariable("cons")
+    adap = getQueryVariable("adap")
+    auto = (100 - demo).toFixed(1)
+    perm = (100 - rest).toFixed(1)
+    gads = (100 - enfo).toFixed(1)
+    tran = (100 - conf).toFixed(1)
+    elit = (100 - popu).toFixed(1)
+    deon = (100 - cons).toFixed(1)
+    cont = (100 - adap).toFixed(1)
+
+    setBarValue("demo", demo)
+    setBarValue("auto", auto)
+    setBarValue("rest", rest)
+    setBarValue("perm", perm)
+    setBarValue("enfo", enfo)
+    setBarValue("gads", gads)
+    setBarValue("conf", conf)
+    setBarValue("tran", tran)
+    setBarValue("popu", popu)
+    setBarValue("elit", elit)
+    setBarValue("cons", cons)
+    setBarValue("deon", deon)
+    setBarValue("adap", adap)
+    setBarValue("cont", cont)
+
+    document.getElementById("bauth").innerHTML = setLabel(demo, bauthArray)
+    document.getElementById("brest").innerHTML = setLabel(rest, brestArray)
+    document.getElementById("benfo").innerHTML = setLabel(enfo, benfoArray)
+    document.getElementById("bdocu").innerHTML = setLabel(conf, bdocuArray)
+    document.getElementById("bpopu").innerHTML = setLabel(popu, bpopuArray)
+    document.getElementById("bjust").innerHTML = setLabel(cons, bjustArray)
+    document.getElementById("bchan").innerHTML = setLabel(adap, bchanArray)
+
+    ideology = ""
+    ideodist = Infinity
+    for (var i = 0; i < ideologies.length; i++) {
+        dist = 0
+        dist += Math.abs(ideologies[i].rests.bauth - demo)*1
+        dist += Math.abs(ideologies[i].rests.brest - rest)*1
+        dist += Math.abs(ideologies[i].rests.benfo - enfo)*1
+        dist += Math.abs(ideologies[i].rests.bdocu - conf)*1
+        dist += Math.abs(ideologies[i].rests.bpopu - popu)*1
+        dist += Math.abs(ideologies[i].rests.bjust - cons)*1
+        dist += Math.abs(ideologies[i].rests.bchan - adap)*1
+        if (dist < ideodist) {
+            ideology = ideologies[i].name
+            ideodist = dist
+        }
+    }
+    document.getElementById("ideology-label").innerHTML = ideology
+
+    function createImage(src, x, y, w, h) {
+        img = new Image ()
+        img.src = src
+        img.onLoad = function() {
+            ctx.drawImage(img, x, y, w, h)
+        }
+    }
+
+    window.onload = function() {
+        var c = document.createElement("canvas")
+        var ctx = c.getContext("2d")
+        c.width = 800;
+        c.height = 1540;
+        ctx.fillStyle = "#e0e0e0"
+        ctx.fillRect(0,0,800,1540);
+
+        img = document.getElementById("img-demo")
+        ctx.drawImage(img, 20, 170, 100, 100);
+        img = document.getElementById("img-auto")
+        ctx.drawImage(img, 680, 170, 100, 100)
+        img = document.getElementById("img-rest")
+        ctx.drawImage(img, 20, 290, 100, 100)
+        img = document.getElementById("img-perm")
+        ctx.drawImage(img, 680, 290, 100, 100)
+        img = document.getElementById("img-enfo")
+        ctx.drawImage(img, 20, 410, 100, 100)
+        img = document.getElementById("img-gads")
+        ctx.drawImage(img, 680, 410, 100, 100)
+        img = document.getElementById("img-popu")
+        ctx.drawImage(img, 20, 530, 100, 100)
+        img = document.getElementById("img-tran")
+        ctx.drawImage(img, 680, 530, 100, 100)
+        img = document.getElementById("img-cons")
+        ctx.drawImage(img, 20, 650, 100, 100);
+        img = document.getElementById("img-deon")
+        ctx.drawImage(img, 680, 650, 100, 100)
+        img = document.getElementById("img-adap")
+        ctx.drawImage(img, 20, 770, 100, 100)
+        img = document.getElementById("img-cont")
+        ctx.drawImage(img, 680, 770, 100, 100)
+        img = document.getElementById("img-v81")
+        ctx.drawImage(img, 20, 890, 100, 100)
+        img = document.getElementById("img-v82")
+        ctx.drawImage(img, 680, 890, 100, 100)
+
+        ctx.fillStyle="#000000"
+        ctx.fillRect(120, 180, 560, 80)
+        ctx.fillRect(120, 300, 560, 80)
+        ctx.fillRect(120, 420, 560, 80)
+        ctx.fillRect(120, 540, 560, 80)
+        ctx.fillStyle="#000000"
+        ctx.fillRect(120, 184, 5.6*demo-2, 72)
+        ctx.fillStyle="#000000"
+        ctx.fillRect(682-5.6*auto, 184, 5.6*auto-2, 72)
+        ctx.fillStyle="#000000"
+        ctx.fillRect(120, 304, 5.6*rest-2, 72)
+        ctx.fillStyle="#000000"
+        ctx.fillRect(682-5.6*perm, 304, 5.6*perm-2, 72)
+        ctx.fillStyle="#000000"
+        ctx.fillRect(120, 424, 5.6*enfo-2, 72)
+        ctx.fillStyle="#000000"
+        ctx.fillRect(682-5.6*gads, 424, 5.6*gads-2, 72)
+        ctx.fillStyle="#000000"
+        ctx.fillRect(120, 544, 5.6*popu-2, 72)
+        ctx.fillStyle="#000000"
+        ctx.fillRect(682-5.6*tran, 544, 5.6*tran-2, 72)
+        ctx.fillStyle="#000000"
+        ctx.font="700 60px Montserrat"
+        ctx.textAlign="left"
+        ctx.fillText("CapValues", 20, 90)
+        ctx.font="40px Montserrat"
+        ctx.fillText(ideology, 20, 140)
+
+        ctx.textAlign="left"
+        if (demo > 30) {ctx.fillText(demo + "%", 130, 237.5)}
+        if (rest > 30) {ctx.fillText(rest + "%", 130, 357.5)}
+        if (enfo > 30) {ctx.fillText(enfo + "%", 130, 477.5)}
+        if (popu > 30) {ctx.fillText(popu + "%", 130, 597.5)}
+        ctx.textAlign="right"
+        if (auto > 30) {ctx.fillText(auto + "%", 670, 237.5)}
+        if (perm > 30) {ctx.fillText(perm + "%", 670, 357.5)}
+        if (gads > 30) {ctx.fillText(gads + "%", 670, 477.5)}
+        if (tran > 30) {ctx.fillText(tran + "%", 670, 597.5)}
+
+        ctx.textAlign="center"
+        ctx.fillText(" Axis: " + document.getElementById("bauth").innerHTML, 400, 175)
+        ctx.fillText(" Axis: " + document.getElementById("brest").innerHTML, 400, 295)
+        ctx.fillText(" Axis: " + document.getElementById("benfo").innerHTML, 400, 415)
+        ctx.fillText(" Axis: " + document.getElementById("bdocu").innerHTML, 400, 535)
+        ctx.fillText(" Axis: " + document.getElementById("bpopu").innerHTML, 400, 655)
+        ctx.fillText(" Axis: " + document.getElementById("bjust").innerHTML, 400, 775)
+        ctx.fillText(" Axis: " + document.getElementById("bpopu").innerHTML, 400, 895)
+        ctx.fillText(" Axis: " + document.getElementById("b8").innerHTML, 400, 1015)
+
+        document.getElementById("banner").src = c.toDataURL();
+    }
+    </script>
+</body>
